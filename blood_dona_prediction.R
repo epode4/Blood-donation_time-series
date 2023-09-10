@@ -40,3 +40,10 @@ train_b1 <- train_b |> BoxCox(lambda = lamb)
 train_b1 |> autoplot()
 train_b2 <- train_b |> BoxCox(lambda = 0)
 train_b2 |> autoplot()
+
+
+#ets
+fit1 <- ets(train_b)
+summary(fit1)
+
+test(train_b,fit1,24)
