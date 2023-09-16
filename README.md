@@ -14,4 +14,36 @@
 - 2005년 1월부터 2021년 12월까지의 월별 헌혈 건수 실적 통계
 - 동일인이 여러 차례를 실시해도 매회 실적으로 인정
 
-<img src="assets/data_autoplot.png" width="500">
+<p align = "center"><img src="assets/data_autoplot.png" width="500"></p>
+<p align = "center">blood_ts(헌혈현황 시계열 변환 데이터)의 시계열 그래프</p>  
+
+<br>
+
+<p align = "center"><img src = "assets/data_decompose_autoplot.png" width="500"></p>
+<p align = "center">blood_ts 시계열 분해 그래프</p>
+
+--- 
+### 데이터 확인 결과  
+- 계절에 따라 규칙적으로 변동하는 계절성이 파악
+- 시간에 따라 꾸준히 증가하거나 감소하는 추세는 확인되지 않음
+- 약 2007년 시점에서 진폭이 큰 폭으로 변화하였지만, 일시적인 증상으로 이상값으로 판단
+
+<br>
+
+< 분산 안정화 필요성 확인>
+<p align = "center"><img src = "assets/traindata_autoplot.png" width="500"></p>
+<p align = "center"> training data 시계열 그래프</p>
+
+- 최적 람다값 = 1.18
+- 람다값은 1에 가까운 값을 보이며 그래프는 진폭이 크게 변환하지 않는다 판단되어 분산 안정화 불필요
+
+---
+
+## ETS 모형 적합 
+<p align = "center"><img src = "assets/ets(a,n,a)_summary.png" width="500"></p>
+<p align = "center"> 최적 AICc를 기준으로 적합된 ETS 모형 </p>
+
+- Trend(추세) : X / Additive seasonal(계절성) : O / multiplicative error : O
+- alpha 값이 0.2963으로 평균에 큰 변동은 존재하지 않음
+- gamma 값이 0.0001로 0에 매우 가까워 계절성에 변동이 거의 존재하지 않음
+
